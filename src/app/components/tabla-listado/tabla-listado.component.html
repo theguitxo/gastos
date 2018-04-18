@@ -1,0 +1,51 @@
+<div class="row py-1" *ngIf="titulo !== ''">
+  <div class="col">
+    <h3>
+        <i class="fa fa-list-alt" aria-hidden="true"></i>
+        {{ titulo }}
+    </h3>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12 table-responsive">
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th *ngFor="let item of columnas">
+            {{item.titulo}}
+          </th>
+          <th *ngIf="acciones.length">
+              Opciones
+            </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let linea of datos | orderby: campoOrden:tipoOrden; let l = index">
+          <td
+            *ngFor="let columna of columnas; let c = index"
+            [ngClass]="{
+              'text-left': columna.alineacion == 'izquierda',
+              'text-right': columna.alineacion == 'derecha'
+            }">
+            <span *ngIf="columna.tipo == 'moneda'">
+              {{ linea[columna.campo] | number:'.2'}}&nbsp;&euro;
+            </span>
+            <span *ngIf="columna.tipo == 'texto'">
+               {{ linea[columna.campo]}}
+            </span>
+            <span *ngIf="columna.tipo == 'fecha'">
+              {{ linea[columna.campo] | date:'dd-MM-yyyy'}}
+            </span>
+          </td>
+          <td *ngIf="acciones.length">
+              <button class="btn btn-primary btn-sm"
+                *ngFor="let item of acciones; let a = index"
+                (click)="ejecutar(linea)">
+                <i class="fa fa-eye" aria-hidden="true"></i>{{ item }}
+              </button>
+            </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
