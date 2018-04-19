@@ -34,7 +34,7 @@ export class FormularioComponent implements OnInit {
   public enviado: boolean;
 
   constructor(private gastos: GastosService) {
-    this.isCollapsed = false;
+    this.isCollapsed = true;
   }
 
   ngOnInit() {
@@ -43,7 +43,7 @@ export class FormularioComponent implements OnInit {
     this.concepto = new FormControl('', Validators.required);
     this.importe = new FormControl('', [Validators.required, Validators.min(0.01)]);
 
-    this.enviado = true;
+    this.enviado = false;
 
     this.formulario = new FormGroup({
       fecha: this.fecha,
