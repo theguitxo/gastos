@@ -43,7 +43,7 @@ export class FormularioComponent implements OnInit {
     this.concepto = new FormControl('', Validators.required);
     this.importe = new FormControl('', [Validators.required, Validators.min(0.01)]);
 
-    this.enviado = false;
+    this.enviado = true;
 
     this.formulario = new FormGroup({
       fecha: this.fecha,
