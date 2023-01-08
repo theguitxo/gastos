@@ -30,4 +30,4 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 You can see a demo of this app on the next url:
 
-http://www.guitxo.com/gastos/
+[https://theguitxo.github.io/gastos/](https://theguitxo.github.io/gastos/)
